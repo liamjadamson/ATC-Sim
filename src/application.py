@@ -5,6 +5,10 @@ class Application:
     def start(self):
         pg.init()
 
+        window_size = self.window_width, self.window_height
+        self.window = pg.display.set_mode(window_size)
+        pg.display.set_caption("ATC Sim | v0.0.1")
+
     def run(self):
         # Main game loop
         update_lag = 0.0
@@ -25,10 +29,13 @@ class Application:
         pg.quit()
 
     def process_input(self):
-        pass
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                self.game_should_run = False
 
     def render(self):
-        pass
+        self.window.fill((0,0,0))
+        pg.display.flip()
 
     def update(self):
         pass
@@ -37,3 +44,7 @@ class Application:
     game_should_run = True
 
     MS_PER_UPDATE = 1000.0
+
+    window_width = 500
+    window_height = 500
+    window = pg.display.set_mode((100,100))
