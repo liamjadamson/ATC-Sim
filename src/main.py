@@ -1,3 +1,7 @@
 import application
 
-print("Hello World")
+game = application.Application()
+
+game.start()
+game.run()
+game.stop()
